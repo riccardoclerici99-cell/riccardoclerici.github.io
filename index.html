@@ -20,6 +20,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.1em;color:var(--mut);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--txt)}
+
+/* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 85px)}
 .hl{padding:80px 56px;display:flex;flex-direction:column;justify-content:center;border-right:.5px solid var(--brd)}
 .htag{font-size:10px;letter-spacing:.22em;color:var(--acc2);margin-bottom:24px;display:flex;align-items:center;gap:10px;opacity:0;animation:fup .8s .2s forwards}
@@ -32,27 +34,37 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 .bp:hover{opacity:.85}
 .bg{display:inline-flex;align-items:center;border:.5px solid var(--brd);color:var(--mut);font-size:11px;letter-spacing:.1em;padding:14px 28px;text-decoration:none;transition:color .2s,border-color .2s}
 .bg:hover{color:var(--txt);border-color:rgba(200,169,110,.4)}
-.hr{background:var(--sur);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.hphoto{width:60%;max-width:290px;display:block;opacity:0;animation:fin 1s .5s forwards;position:relative;z-index:1;margin-bottom:32px}
-.wfbar{width:100%;display:flex;align-items:flex-end;gap:3px;padding:0 24px 24px;position:relative;z-index:5}
-.wfbar .b{width:3px;background:var(--acc);border-radius:2px 2px 0 0;flex-shrink:0}
-.hlabel{position:absolute;top:28px;right:28px;font-size:10px;letter-spacing:.14em;color:var(--mut);z-index:6}
+
+/* HERO RIGHT — waveform only */
+.hr{background:var(--sur);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wf-container{display:flex;align-items:center;gap:3px;width:85%;height:200px}
+.wf-container .b{width:3px;flex-shrink:0;border-radius:2px;background:#c8a96e}
+.hlabel{position:absolute;top:28px;right:28px;font-size:10px;letter-spacing:.14em;color:var(--mut)}
 .hlabel span{color:var(--acc2)}
+
+/* SKILLS STRIP */
 .strip{padding:18px 56px;border-bottom:.5px solid var(--brd);background:var(--sur);display:flex;align-items:center;gap:28px;overflow-x:auto}
 .slabel{font-size:10px;letter-spacing:.18em;color:var(--mut);white-space:nowrap}
 .tags{display:flex;gap:8px;flex-wrap:wrap}
 .tag{font-size:11px;letter-spacing:.06em;padding:5px 14px;border:.5px solid var(--brd);color:var(--mut);white-space:nowrap;transition:color .2s,border-color .2s}
 .tag:hover{color:var(--acc);border-color:var(--acc)}
-#about{padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;border-bottom:.5px solid var(--brd)}
+
+/* ABOUT — 3 columns: text | stats | photo */
+#about{padding:96px 56px;display:grid;grid-template-columns:1fr 1fr 340px;gap:64px;border-bottom:.5px solid var(--brd);align-items:start}
 .ey{font-size:10px;letter-spacing:.2em;color:var(--acc);margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .ey::before{content:'';display:block;width:20px;height:.5px;background:var(--acc)}
-.atitle{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1.15;margin-bottom:24px}
+.atitle{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(24px,2.5vw,36px);line-height:1.15;margin-bottom:24px}
 .atitle span{color:var(--acc)}
 .atext{font-size:14px;color:var(--mut);line-height:1.9;margin-bottom:16px}
-.aright{display:flex;flex-direction:column;justify-content:center;gap:28px}
+.aright{display:flex;flex-direction:column;gap:28px;padding-top:4px}
 .srow{border-top:.5px solid var(--brd);padding-top:20px}
 .sn{font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:var(--acc);line-height:1;margin-bottom:4px}
 .sd{font-size:11px;color:var(--mut);letter-spacing:.06em}
+.aphoto-wrap{position:relative}
+.aphoto{width:100%;display:block;filter:none}
+.aphoto-label{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(to top,rgba(10,10,11,.85),transparent);font-size:10px;letter-spacing:.12em;color:var(--acc)}
+
+/* PORTFOLIO */
 #portfolio{padding:96px 56px}
 .ph{display:flex;align-items:baseline;gap:20px;margin-bottom:48px}
 .pt{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;color:var(--acc);white-space:nowrap}
@@ -72,6 +84,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 .cdesc{font-size:12px;color:var(--mut);line-height:1.7}
 .clink{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;letter-spacing:.08em;color:var(--acc);text-decoration:none;border-bottom:.5px solid transparent;transition:border-color .2s}
 .clink:hover{border-color:var(--acc)}
+
+/* CONTACT */
 #contact{border-top:.5px solid var(--brd);padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .cbig{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.15;margin-bottom:16px}
 .cbig span{color:var(--acc)}
@@ -86,16 +100,22 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 footer{padding:24px 56px;border-top:.5px solid var(--brd);display:flex;justify-content:space-between;align-items:center}
 footer p{font-size:11px;color:var(--mut)}
 footer span{color:var(--acc)}
+
 @keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fin{from{opacity:0}to{opacity:1}}
 .rv{transition:opacity .7s,transform .7s}
 .rv.hidden{opacity:0;transform:translateY(24px)}
 .rv.visible{opacity:1!important;transform:translateY(0)!important}
+
+@media(max-width:900px){
+  #about{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .aphoto-wrap{grid-column:1/-1}
+}
 @media(max-width:768px){
   nav{padding:20px 24px}.nav-links{gap:20px}
   .hero{grid-template-columns:1fr;min-height:auto}
   .hl{padding:56px 24px;border-right:none;border-bottom:.5px solid var(--brd)}
-  .hr{min-height:360px}
+  .hr{min-height:280px}
   .strip{padding:16px 24px;gap:16px}
   #about{grid-template-columns:1fr;padding:64px 24px;gap:40px}
   #portfolio{padding:64px 24px}.pgrid{grid-template-columns:1fr}
@@ -108,6 +128,7 @@ footer span{color:var(--acc)}
 <body>
 <div id="rc-cur"></div>
 <div id="rc-ring"></div>
+
 <nav>
   <a class="logo" href="#">RC</a>
   <ul class="nav-links">
@@ -116,6 +137,7 @@ footer span{color:var(--acc)}
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
 <section class="hero">
   <div class="hl">
     <div class="htag">GAME &amp; FILM COMPOSER &middot; SOUND DESIGNER</div>
@@ -127,11 +149,11 @@ footer span{color:var(--acc)}
     </div>
   </div>
   <div class="hr">
-    <img class="hphoto" src="photo.jpg" alt="Riccardo Clerici"/>
-    <div class="wfbar" id="wf"></div>
+    <div class="wf-container" id="wf"></div>
     <div class="hlabel">MILAN, IT &middot; <span>OPEN TO WORK</span></div>
   </div>
 </section>
+
 <div class="strip">
   <span class="slabel">SKILLS &amp; TOOLS</span>
   <div class="tags">
@@ -148,20 +170,26 @@ footer span{color:var(--acc)}
     <span class="tag">Audio Editing</span>
   </div>
 </div>
+
 <section id="about">
   <div class="rv">
     <div class="ey">ABOUT ME</div>
     <h2 class="atitle">Adaptive music<br><span>for every medium</span></h2>
     <p class="atext">Game &amp; Film Composer based in Milan, Italy. Bachelor&rsquo;s in Composition from CPM Music Institute (2025), with a thesis on the dramatic and psychological role of horror music in cinema and video games.</p>
-    <p class="atext">I specialize in adaptive audio, interactive scoring, and end-to-end production &mdash; composition, recording, mixing, and mastering. I work across video games, film, fashion, and theatre, collaborating with directors and game designers to align musical language with visual storytelling.</p>
-    <p class="atext">Winner of the <span style="color:var(--acc)">Campiello Giovani Award 2022</span> for the sound design of the nationally recognized short story &ldquo;La Spartenza&rdquo;.</p>
+    <p class="atext">I specialize in adaptive audio, interactive scoring, and end-to-end production &mdash; composition, recording, mixing, and mastering. I work across video games, film, fashion, and theatre.</p>
+    <p class="atext">Winner of the <span style="color:var(--acc)">Campiello Giovani Award 2022</span> for the sound design of &ldquo;La Spartenza&rdquo;.</p>
   </div>
   <div class="aright rv">
     <div class="srow"><div class="sn">DAW</div><div class="sd">ABLETON &middot; PRO TOOLS &middot; FL STUDIO &middot; STUDIO ONE</div></div>
     <div class="srow"><div class="sn">MID</div><div class="sd">WWISE &middot; UNITY &mdash; INTERACTIVE AUDIO</div></div>
     <div class="srow"><div class="sn">360&deg;</div><div class="sd">COMPOSITION &rarr; RECORDING &rarr; MIX &rarr; MASTER</div></div>
   </div>
+  <div class="aphoto-wrap rv">
+    <img class="aphoto" src="photo.jpg" alt="Riccardo Clerici"/>
+    <div class="aphoto-label">RICCARDO CLERICI &mdash; MILAN</div>
+  </div>
 </section>
+
 <section id="portfolio">
   <div class="ph rv">
     <span class="pt">SELECTED WORK</span>
@@ -195,6 +223,7 @@ footer span{color:var(--acc)}
     </div>
   </div>
 </section>
+
 <section id="contact">
   <div class="rv">
     <h2 class="cbig">Got a project<br>in mind?<br><span>Let&rsquo;s talk.</span></h2>
@@ -207,29 +236,57 @@ footer span{color:var(--acc)}
     <div class="citem"><span class="clbl">LOCATION</span><span class="cval" style="cursor:default">Milan, Italy</span><span class="carr"></span></div>
   </div>
 </section>
+
 <footer>
   <p>&copy; 2026 <span>Riccardo Clerici</span></p>
   <p>Game &amp; Film Composer &middot; Milan, Italy</p>
 </footer>
+
 <script>
+// CURSOR
 var cur=document.getElementById('rc-cur'),ring=document.getElementById('rc-ring');
 var tx=-40,ty=-40,rx=-40,ry=-40;
-document.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;cur.style.left=tx+'px';cur.style.top=ty+'px';});
+document.addEventListener('mousemove',function(e){
+  tx=e.clientX;ty=e.clientY;
+  cur.style.left=tx+'px';cur.style.top=ty+'px';
+});
 function loopRing(){rx+=(tx-rx)*.12;ry+=(ty-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loopRing);}
 loopRing();
 document.querySelectorAll('a,button,.card,.tag').forEach(function(el){
   el.addEventListener('mouseenter',function(){cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.opacity='.15';});
   el.addEventListener('mouseleave',function(){cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='.5';});
 });
+
+// WAVEFORM
 var wf=document.getElementById('wf');
 var bH=[18,32,52,38,68,88,62,42,78,100,72,52,84,58,38,68,92,48,28,62,80,44,60,34,74,52,88,40,68,48,60,78,44,34,62,50,76,30,56,85];
-bH.forEach(function(h){var b=document.createElement('div');b.className='b';b.style.width='3px';b.style.height=h+'px';b.style.background='#c8a96e';b.style.borderRadius='2px 2px 0 0';b.style.flexShrink='0';b.style.opacity=0.25+(h/100)*0.75;wf.appendChild(b);});
+bH.forEach(function(h){
+  var b=document.createElement('div');
+  b.className='b';
+  b.style.cssText='width:3px;height:'+h+'px;background:#c8a96e;border-radius:2px;flex-shrink:0;opacity:'+(0.25+(h/100)*0.75);
+  wf.appendChild(b);
+});
 var t=0;
-function loopWave(){t+=.035;var bars=wf.querySelectorAll('.b');bars.forEach(function(b,i){var h=Math.max(4,bH[i]+Math.sin(t+i*.38)*18+Math.cos(t*.7+i*.2)*8);b.style.height=h+'px';b.style.opacity=.2+(h/120)*.8;});requestAnimationFrame(loopWave);}
+function loopWave(){
+  t+=.035;
+  var bars=wf.querySelectorAll('.b');
+  bars.forEach(function(b,i){
+    var h=Math.max(4,bH[i]+Math.sin(t+i*.38)*18+Math.cos(t*.7+i*.2)*8);
+    b.style.height=h+'px';
+    b.style.opacity=.2+(h/120)*.8;
+  });
+  requestAnimationFrame(loopWave);
+}
 loopWave();
+
+// SCROLL REVEAL
 var rvs=document.querySelectorAll('.rv');
 rvs.forEach(function(el){el.classList.add('hidden');});
-var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('hidden');e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.remove('hidden');e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.08});
 rvs.forEach(function(el){obs.observe(el);});
 </script>
 </body>
