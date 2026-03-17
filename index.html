@@ -40,12 +40,11 @@
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; border: 0.5px solid var(--border); color: var(--muted); font-size: 11px; letter-spacing: 0.1em; padding: 14px 28px; text-decoration: none; transition: color 0.2s, border-color 0.2s; }
     .btn-ghost:hover { color: var(--text); border-color: rgba(200,169,110,0.4); }
 
-    .hero-right { background: var(--surface); display: grid; grid-template-rows: 1fr auto; position: relative; overflow: hidden; }
-    .hero-photo-wrap { overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(15%); opacity: 0; animation: fadeIn 1s 0.6s forwards; display: block; }
-    .waveform-wrap { display: flex; align-items: center; gap: 2px; height: 100px; opacity: 0; animation: fadeIn 1.2s 1.2s forwards; padding: 0 24px; background: var(--surface); border-top: 0.5px solid var(--border); }
-    .waveform-wrap .bar { width: 2px; background: var(--accent); border-radius: 2px; flex-shrink: 0; }
-    .hero-right-label { position: absolute; top: 28px; right: 28px; font-size: 10px; letter-spacing: 0.14em; color: var(--muted); z-index: 2; background: rgba(10,10,11,0.6); padding: 4px 8px; }
+    .hero-right { background: var(--surface); display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
+    .hero-photo { width: 62%; max-width: 300px; display: block; object-fit: cover; object-position: center top; filter: grayscale(15%); opacity: 0; animation: fadeIn 1s 0.6s forwards; position: relative; z-index: 1; margin-bottom: 0; }
+    .waveform-wrap { display: flex; align-items: center; gap: 3px; height: 140px; opacity: 0; animation: fadeIn 1.2s 1s forwards; position: absolute; bottom: 0; left: 0; right: 0; padding: 0 28px 24px; z-index: 2; pointer-events: none; }
+    .waveform-wrap .bar { width: 3px; background: var(--accent); border-radius: 2px; }
+    .hero-right-label { position: absolute; top: 28px; right: 28px; font-size: 10px; letter-spacing: 0.14em; color: var(--muted); z-index: 3; }
     .hero-right-label span { color: var(--accent2); }
 
     .skills-strip { padding: 18px 56px; border-bottom: 0.5px solid var(--border); background: var(--surface); display: flex; align-items: center; gap: 28px; overflow-x: auto; }
@@ -148,9 +147,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-photo-wrap">
-        <img class="hero-photo" src="photo.jpg" alt="Riccardo Clerici" />
-      </div>
+      <img class="hero-photo" src="photo.jpg" alt="Riccardo Clerici" />
       <div class="waveform-wrap" id="waveform"></div>
       <div class="hero-right-label">MILAN, IT · <span>OPEN TO WORK</span></div>
     </div>
