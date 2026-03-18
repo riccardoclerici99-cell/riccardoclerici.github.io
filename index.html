@@ -33,7 +33,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 .bg{display:inline-flex;align-items:center;border:.5px solid var(--brd);color:var(--mut);font-size:11px;letter-spacing:.1em;padding:14px 28px;text-decoration:none;transition:color .2s,border-color .2s}
 .bg:hover{color:var(--txt);border-color:rgba(200,169,110,.4)}
 .hr{background:var(--sur);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.wf-container{display:flex;align-items:center;gap:3px;width:85%;height:200px}
+.wf-container{display:flex;align-items:center;justify-content:space-between;width:92%;height:200px}
 .hlabel{position:absolute;top:28px;right:28px;font-size:10px;letter-spacing:.14em;color:var(--mut)}
 .hlabel span{color:var(--acc2)}
 .strip{padding:18px 56px;border-bottom:.5px solid var(--brd);background:var(--sur);display:flex;align-items:center;gap:28px;overflow-x:auto}
@@ -283,7 +283,7 @@ footer span{color:var(--acc)}
   var bH=[18,32,52,38,68,88,62,42,78,100,72,52,84,58,38,68,92,48,28,62,80,44,60,34,74,52,88,40,68,48,60,78,44,34,62,50,76,30,56,85];
   bH.forEach(function(h){
     var b=document.createElement('div');
-    b.style.cssText='width:3px;height:'+h+'px;background:#c8a96e;border-radius:2px;flex-shrink:0;opacity:'+(0.25+(h/100)*0.75)+';display:block;';
+    b.style.cssText='width:5px;height:'+h+'px;background:#c8a96e;border-radius:3px;flex-shrink:0;opacity:'+(0.25+(h/100)*0.75)+';display:block;';
     wf.appendChild(b);
   });
   var t=0;
