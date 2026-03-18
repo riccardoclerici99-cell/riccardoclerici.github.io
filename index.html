@@ -92,6 +92,11 @@ footer span{color:var(--acc)}
 .rv{transition:opacity .7s,transform .7s}
 .rv.hidden{opacity:0;transform:translateY(24px)}
 .rv.visible{opacity:1!important;transform:translateY(0)!important}
+#yt-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9990;align-items:center;justify-content:center}
+#yt-overlay.open{display:flex}
+#yt-box{position:relative;width:90%;max-width:900px;aspect-ratio:16/9}
+#yt-box iframe{width:100%;height:100%;border:none}
+#yt-close{position:absolute;top:-40px;right:0;font-size:24px;color:var(--acc);cursor:pointer;background:none;border:none;font-family:'Syne',sans-serif;line-height:1}
 @media(max-width:900px){
   #about{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
   .aphoto-wrap{grid-column:1/-1}
@@ -179,7 +184,7 @@ footer span{color:var(--acc)}
   </div>
   <div class="aphoto-wrap rv">
     <img class="aphoto" src="photo.jpg" alt="Riccardo Clerici"/>
-    <div class="aphoto-label">RICCARDO CLERICI</div>
+    <div class="aphoto-label">RICCARDO CLERICI - MILAN</div>
   </div>
 </section>
 <section id="portfolio">
@@ -189,13 +194,16 @@ footer span{color:var(--acc)}
     <span class="pc">3 PROJECTS</span>
   </div>
   <div class="pgrid">
-    <div class="card rv">
+    <div class="card rv" onclick="openYT('TAorPrIpbXg')" style="cursor:pointer">
       <div class="bdg">THESIS 2025</div>
-      <div class="cvis"><div class="pbtn"><div class="tri"></div></div></div>
+      <div class="cvis" style="background:var(--sur2);overflow:hidden;position:relative">
+        <img src="https://img.youtube.com/vi/TAorPrIpbXg/mqdefault.jpg" alt="Scary Sounds" style="width:100%;height:100%;object-fit:cover;opacity:.7;position:absolute;inset:0"/>
+        <div class="pbtn" style="position:relative;z-index:1"><div class="tri"></div></div>
+      </div>
       <div class="ctag">COMPOSITION &middot; SOUND DESIGN</div>
       <div class="ctitle">"Scary Sounds"</div>
       <div class="cdesc">Bachelor's thesis at CPM Music Institute. Academic study of horror music in cinema and games, with a practical demo soundtrack.</div>
-      <a href="#" class="clink">LISTEN</a>
+      <span class="clink">WATCH &rarr;</span>
     </div>
     <div class="card rv">
       <div class="bdg">AWARD 2022</div>
@@ -221,18 +229,35 @@ footer span{color:var(--acc)}
     <p class="csub">Available for collaborations on video games, film, fashion, theatre and any project where music plays a central role. Based in Milan, Italy, working internationally.</p>
   </div>
   <div class="cright rv">
-    <div class="citem"><span class="clbl">EMAIL</span><a href="mailto:riccardo.clerici99&#64;gmail.com" class="cval">riccardo.clerici99&#64;gmail.com</a><span class="carr">&#8599;</span></div>
+    <div class="citem"><span class="clbl">EMAIL</span><a href="/cdn-cgi/l/email-protection#d0a2b9b3b3b1a2b4bffeb3bcb5a2b9b3b9e9e9f6f3e6e4ebb7bdb1b9bcfeb3bfbd" class="cval">riccardo.clerici99&#64;gmail.com</a><span class="carr">&#8599;</span></div>
     <div class="citem"><span class="clbl">PHONE</span><a href="tel:+393347291512" class="cval">+39 334 729 1512</a><span class="carr">&#8599;</span></div>
     <div class="citem"><span class="clbl">LINKEDIN</span><a href="https://www.linkedin.com/in/riccardo-clerici-8619b739a/" target="_blank" class="cval">Riccardo Clerici</a><span class="carr">&#8599;</span></div>
     <div class="citem"><span class="clbl">LOCATION</span><span class="cval" style="cursor:default">Milan, Italy</span><span class="carr"></span></div>
   </div>
 </section>
+<div id="yt-overlay" onclick="closeYT()">
+  <div id="yt-box" onclick="event.stopPropagation()">
+    <button id="yt-close" onclick="closeYT()">&#10005;</button>
+    <iframe id="yt-frame" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
 <footer>
   <p>&#169; 2026 <span>Riccardo Clerici</span></p>
   <p>Game &amp; Film Composer &middot; Milan, Italy</p>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
+  window.openYT=function(id){
+    document.getElementById('yt-frame').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+    document.getElementById('yt-overlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.closeYT=function(){
+    document.getElementById('yt-frame').src='';
+    document.getElementById('yt-overlay').classList.remove('open');
+    document.body.style.overflow='';
+  };
+  document.addEventListener('keydown',function(e){if(e.key==='Escape') window.closeYT();});
   var cur=document.getElementById('rc-cur');
   var ring=document.getElementById('rc-ring');
   if(!cur||!ring) return;
@@ -274,7 +299,6 @@ footer span{color:var(--acc)}
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        e.target.classList.remove('hidden');
         e.target.classList.add('visible');
         obs.unobserve(e.target);
       }
