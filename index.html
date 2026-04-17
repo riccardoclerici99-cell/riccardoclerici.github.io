@@ -55,24 +55,28 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 5
 .aphoto{width:100%;display:block}
 .aphoto-label{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(to top,rgba(10,10,11,.85),transparent);font-size:10px;letter-spacing:.12em;color:var(--acc)}
 #portfolio{padding:96px 56px}
-.ph{display:flex;align-items:baseline;gap:20px;margin-bottom:48px}
+.ph{display:flex;align-items:baseline;gap:20px;margin-bottom:56px}
 .pt{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;color:var(--acc);white-space:nowrap}
 .pl{flex:1;height:.5px;background:var(--brd)}
 .pc{font-size:11px;color:var(--mut);white-space:nowrap}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd)}
-.card{background:var(--sur);padding:28px;cursor:pointer;transition:background .25s;position:relative}
-.card:hover{background:var(--sur2)}
-.cvis{width:100%;height:160px;background:var(--sur2);margin-bottom:20px;display:flex;align-items:center;justify-content:center;transition:background .25s}
-.card:hover .cvis{background:#1f1f24}
-.pbtn{width:44px;height:44px;border:.5px solid var(--acc);display:flex;align-items:center;justify-content:center;transition:background .2s}
-.card:hover .pbtn{background:rgba(200,169,110,.1)}
-.tri{width:0;height:0;border-style:solid;border-width:7px 0 7px 13px;border-color:transparent transparent transparent var(--acc);margin-left:4px}
-.bdg{position:absolute;top:14px;right:14px;font-size:9px;letter-spacing:.12em;padding:3px 9px;background:rgba(200,169,110,.08);color:var(--acc);border:.5px solid rgba(200,169,110,.2)}
-.ctag{font-size:10px;letter-spacing:.14em;color:var(--acc2);margin-bottom:6px}
-.ctitle{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px}
-.cdesc{font-size:12px;color:var(--mut);line-height:1.7}
-.clink{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;letter-spacing:.08em;color:var(--acc);text-decoration:none;border-bottom:.5px solid transparent;transition:border-color .2s}
-.clink:hover{border-color:var(--acc)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--sur);cursor:pointer;transition:background .3s, transform .3s;position:relative;display:flex;flex-direction:column;border:.5px solid var(--brd)}
+.card:hover{background:var(--sur2);transform:translateY(-4px)}
+.cvis{width:100%;height:200px;overflow:hidden;position:relative;flex-shrink:0}
+.cvis img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s, transform .3s}
+.card:hover .cvis img{opacity:.9;transform:scale(1.03)}
+.cvis-placeholder{width:100%;height:100%;background:var(--sur2);display:flex;align-items:center;justify-content:center}
+.card:hover .cvis-placeholder{background:#1f1f24}
+.pbtn{width:48px;height:48px;border:.5px solid var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s, transform .2s;position:relative;z-index:1}
+.card:hover .pbtn{background:rgba(200,169,110,.15);transform:scale(1.1)}
+.tri{width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent var(--acc);margin-left:5px}
+.bdg{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:.14em;padding:4px 10px;background:rgba(10,10,11,.75);color:var(--acc);border:.5px solid rgba(200,169,110,.3);backdrop-filter:blur(4px)}
+.card-body{padding:24px 24px 28px;display:flex;flex-direction:column;flex:1}
+.ctag{font-size:9px;letter-spacing:.18em;color:var(--acc2);margin-bottom:10px}
+.ctitle{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:10px;line-height:1.2}
+.cdesc{font-size:12px;color:var(--mut);line-height:1.75;flex:1}
+.clink{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:10px;letter-spacing:.14em;color:var(--acc);text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;transition:gap .2s}
+.clink:hover{gap:12px}
 #contact{border-top:.5px solid var(--brd);padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .cbig{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.15;margin-bottom:16px}
 .cbig span{color:var(--acc)}
@@ -114,7 +118,7 @@ footer span{color:var(--acc)}
   .strip{padding:14px 20px;gap:12px}
   #about{grid-template-columns:1fr;padding:56px 24px;gap:32px}
   .aphoto{max-height:420px;object-fit:cover;object-position:center top}
-  #portfolio{padding:56px 24px}.pgrid{grid-template-columns:1fr}
+  #portfolio{padding:56px 24px}.pgrid{grid-template-columns:1fr;gap:16px}
   #contact{grid-template-columns:1fr;padding:56px 24px;gap:40px}
   .cval{font-size:12px;word-break:break-all}
   footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center}
@@ -195,39 +199,42 @@ footer span{color:var(--acc)}
   </div>
   <div class="pgrid">
     <div class="card rv" onclick="openYT('TAorPrIpbXg')" style="cursor:pointer">
-      <div class="bdg">THESIS 2025</div>
-      <div class="cvis" style="background:var(--sur2);overflow:hidden;position:relative">
-        <img src="https://img.youtube.com/vi/TAorPrIpbXg/mqdefault.jpg" alt="Scary Sounds" style="width:100%;height:100%;object-fit:cover;opacity:.7;position:absolute;inset:0"/>
-        <div class="pbtn" style="position:relative;z-index:1"><div class="tri"></div></div>
+      <div class="cvis">
+        <img src="https://img.youtube.com/vi/TAorPrIpbXg/mqdefault.jpg" alt="Scary Sounds"/>
+        <div class="bdg">THESIS 2025</div>
       </div>
-      <div class="ctag">COMPOSITION &middot; SOUND DESIGN</div>
-      <div class="ctitle">"Scary Sounds"</div>
-      <div class="cdesc">Bachelor's thesis at CPM Music Institute. Academic study of horror music in cinema and games, with a practical demo soundtrack.</div>
-      <span class="clink">WATCH &rarr;</span>
+      <div class="card-body">
+        <div class="ctag">COMPOSITION &middot; SOUND DESIGN</div>
+        <div class="ctitle">"Scary Sounds"</div>
+        <div class="cdesc">Bachelor's thesis at CPM Music Institute. Academic study of horror music in cinema and games, with a practical demo soundtrack.</div>
+        <span class="clink">WATCH &rarr;</span>
+      </div>
     </div>
     
     <div class="card rv" onclick="openYT('btkLpsb6fcw')" style="cursor:pointer">
-      <div class="bdg">LATEST 2026</div>
-      <div class="cvis" style="background:var(--sur2);overflow:hidden;position:relative">
-        <img src="https://img.youtube.com/vi/btkLpsb6fcw/mqdefault.jpg" alt="Demo Reel 2026" style="width:100%;height:100%;object-fit:cover;opacity:.7;position:absolute;inset:0"/>
-        <div class="pbtn" style="position:relative;z-index:1"><div class="tri"></div></div>
+      <div class="cvis">
+        <img src="https://img.youtube.com/vi/btkLpsb6fcw/mqdefault.jpg" alt="Demo Reel 2026"/>
+        <div class="bdg">LATEST 2026</div>
       </div>
-      <div class="ctag">COMPOSITION &middot; SOUND DESIGN &middot; SHOWREEL</div>
-      <div class="ctitle">Demo Reel 2026</div>
-      <div class="cdesc">Una selezione dei miei migliori lavori recenti, che spazia dall'adaptive audio per i videogiochi alla composizione orchestrale e sound design.</div>
-      <span class="clink">WATCH REEL &rarr;</span>
+      <div class="card-body">
+        <div class="ctag">COMPOSITION &middot; SOUND DESIGN &middot; SHOWREEL</div>
+        <div class="ctitle">Demo Reel 2026</div>
+        <div class="cdesc">A selection of my best recent work, spanning adaptive audio for video games, orchestral composition and sound design.</div>
+        <span class="clink">WATCH REEL &rarr;</span>
+      </div>
     </div>
     
     <div class="card rv" onclick="openYT('8difjykch2E')" style="cursor:pointer">
-      <div class="bdg">FREELANCE</div>
-      <div class="cvis" style="background:var(--sur2);overflow:hidden;position:relative">
-        <img src="https://img.youtube.com/vi/8difjykch2E/mqdefault.jpg" alt="Commissions" style="width:100%;height:100%;object-fit:cover;opacity:.7;position:absolute;inset:0"/>
-        <div class="pbtn" style="position:relative;z-index:1"><div class="tri"></div></div>
+      <div class="cvis">
+        <img src="https://img.youtube.com/vi/8difjykch2E/mqdefault.jpg" alt="Commissions"/>
+        <div class="bdg">FREELANCE</div>
       </div>
-      <div class="ctag">SHORT FILMS &middot; FASHION &middot; THEATRE</div>
-      <div class="ctitle">Commissions</div>
-      <div class="cdesc">Full scoring for independent short films, fashion show music for emerging Italian brands, and electroacoustic music for contemporary theatre.</div>
-      <span class="clink">WATCH &rarr;</span>
+      <div class="card-body">
+        <div class="ctag">SHORT FILMS &middot; FASHION &middot; THEATRE</div>
+        <div class="ctitle">Commissions</div>
+        <div class="cdesc">Full scoring for independent short films, fashion show music for emerging Italian brands, and electroacoustic music for contemporary theatre.</div>
+        <span class="clink">WATCH &rarr;</span>
+      </div>
     </div>
   </div>
 </section>
