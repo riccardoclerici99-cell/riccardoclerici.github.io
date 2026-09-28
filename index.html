@@ -385,17 +385,13 @@
       transform: scale(1.03);
     }
 
-    .about__text p {
-      color: #c9c9cf;
+    /* Un unico blocco di testo, tutto uniforme */
+    .about__text {
       font-size: 1.05rem;
-      margin-bottom: 20px;
+      font-weight: 400;
+      color: #c9c9cf;
       max-width: 62ch;
-    }
-    .about__text p:first-of-type {
-      font-size: 1.28rem;
-      color: var(--text);
-      font-weight: 300;
-      line-height: 1.55;
+      line-height: 1.7;
     }
 
     /* ============================================================
@@ -546,7 +542,6 @@
     @media (max-width: 880px) {
       .burger { display: block; }
 
-      /* Logo ridimensionato su mobile per non collidere con il menu */
       .logo {
         font-size: 1.55rem;
         letter-spacing: .08em;
@@ -666,7 +661,7 @@
 
 
     <!-- ============================================================
-         ABOUT — only photo + bio
+         ABOUT — photo on the left, single continuous text on the right
          ============================================================ -->
     <section class="section" id="about">
       <div class="container">
@@ -678,22 +673,14 @@
                  loading="lazy" />
           </figure>
 
-          <div class="about__text">
-            <p class="reveal">
-              I'm Riccardo Clerici, a [main role] based in [City].
-              For over [X] years I've worked across [film, music, brands], building
-              projects that combine narrative rigour with visual sensibility.
-            </p>
-            <p class="reveal">
-              I've collaborated with [company, label, festival and production names],
-              bringing my work to [platforms, festivals, TV networks].
-              My approach always starts from listening: every project is born
-              from a question, not an answer.
-            </p>
-            <p class="reveal">
-              I'm currently working on [current project] and I'm available
-              for new collaborations, nationally and internationally.
-            </p>
+          <div class="about__text reveal">
+            Riccardo Clerici's horror style is deeply rooted in the masters of global
+            horror cinema. Capable of ranging from gothic atmospheres to raw, industrial
+            soundscapes, Clerici's notable scores include Il Primo e Ultimo Bagliore di
+            Vita, Devara, and Sige, among others. He has also collaborated with NABA
+            (Nuova Accademia di Belle Arti) and the Campiello Giovani Festival, for which
+            he provided the soundtrack for Alberto Varsalona's winning story, and in 2026,
+            he scored the music for the Officina Film Festival.
           </div>
 
         </div>
