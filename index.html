@@ -24,7 +24,6 @@
     /* ============================================================
        0. CUSTOM FONT (LOGO) — .TTF version
        File richiesto: assets/fonts/mio-font-logo.ttf
-       Se il tuo file ha un nome diverso, cambia il percorso qui sotto.
        ============================================================ */
     @font-face {
       font-family: 'MioLogoFont';
@@ -248,11 +247,12 @@
       width: 100%;
     }
 
+    /* LOGO — più grande del 40% e più lungo dell'80% (via letter-spacing) */
     .logo {
       font-family: var(--font-logo);
-      font-size: 1.55rem;
+      font-size: 2.17rem;         /* era 1.55rem → +40% */
       font-weight: 700;
-      letter-spacing: .02em;
+      letter-spacing: .18em;      /* era .02em → testo molto più distanziato */
       line-height: 1;
       white-space: nowrap;
       transition: opacity .3s var(--ease);
@@ -545,6 +545,12 @@
 
     @media (max-width: 880px) {
       .burger { display: block; }
+
+      /* Logo ridimensionato su mobile per non collidere con il menu */
+      .logo {
+        font-size: 1.55rem;
+        letter-spacing: .08em;
+      }
 
       .nav {
         position: fixed;
