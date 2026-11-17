@@ -508,23 +508,15 @@
     .footer__inner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 24px;
       flex-wrap: wrap;
     }
-    .footer__copy,
-    .footer__legal a {
+    .footer__copy {
       font-size: .78rem;
       color: var(--muted);
       letter-spacing: .04em;
     }
-    .footer__legal {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-    .footer__legal a { transition: color .3s var(--ease); }
-    .footer__legal a:hover { color: var(--text); }
 
     .to-top {
       position: fixed;
@@ -855,12 +847,6 @@
   <footer class="footer">
     <div class="container footer__inner">
       <p class="footer__copy">© <span id="year">2025</span> Riccardo Clerici. All rights reserved.</p>
-
-      <nav class="footer__legal" aria-label="Legal links">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/cookie">Cookie Policy</a>
-        <a href="/legal">Legal notes</a>
-      </nav>
     </div>
   </footer>
 
