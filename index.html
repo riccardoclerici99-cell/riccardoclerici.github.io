@@ -84,6 +84,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body.nav-open { overflow: hidden; }
@@ -139,7 +140,7 @@
     /* ============================================================
        3. UTILITIES
        ============================================================ */
-    .section { padding: clamp(80px, 12vw, 150px) 0; }
+    .section { padding: clamp(60px, 11vw, 140px) 0; }
     .section--alt { background: rgba(255, 255, 255, .022); }
 
     .section-label {
@@ -247,12 +248,11 @@
       width: 100%;
     }
 
-    /* LOGO — più grande del 40% e più lungo dell'80% (via letter-spacing) */
     .logo {
       font-family: var(--font-logo);
-      font-size: 2.17rem;         /* era 1.55rem → +40% */
+      font-size: 2.17rem;
       font-weight: 700;
-      letter-spacing: .18em;      /* era .02em → testo molto più distanziato */
+      letter-spacing: .18em;
       line-height: 1;
       white-space: nowrap;
       transition: opacity .3s var(--ease);
@@ -303,15 +303,13 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding-left: 24px;
-      border-left: 1px solid var(--line);
     }
 
     .socials a {
       display: grid;
       place-items: center;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       color: var(--muted);
       transition: color .3s var(--ease), background-color .3s var(--ease), transform .3s var(--ease);
@@ -348,11 +346,11 @@
     .burger.is-active span:nth-child(3) { top: 22px; transform: rotate(-45deg); }
 
     /* ============================================================
-       5. HERO — EMPTY
+       5. HERO — ridotta
        ============================================================ */
     .hero {
       position: relative;
-      min-height: 100svh;
+      min-height: clamp(180px, 30svh, 340px);
     }
 
     /* ============================================================
@@ -385,7 +383,6 @@
       transform: scale(1.03);
     }
 
-    /* Un unico blocco di testo, tutto uniforme */
     .about__text {
       font-size: 1.05rem;
       font-weight: 400;
@@ -395,12 +392,39 @@
     }
 
     /* ============================================================
-       7. PORTFOLIO — 4 VIDEO SLOTS
+       7. PORTFOLIO — WORK ITEMS (video + testo)
        ============================================================ */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(16px, 2.5vw, 28px);
+      gap: clamp(24px, 3.5vw, 44px) clamp(16px, 2.5vw, 28px);
+      align-items: start;
+    }
+
+    .work-item {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(14px, 1.6vw, 20px);
+    }
+
+    .work-item__info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .work-item__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--text);
+    }
+
+    .work-item__desc {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 52ch;
     }
 
     .video-slot {
@@ -433,18 +457,18 @@
       transition: opacity .5s var(--ease);
     }
 
-    .video-slot:hover {
+    .work-item:hover .video-slot {
       transform: translateY(-6px);
       border-color: rgba(255,255,255,.28);
       box-shadow: 0 22px 50px -20px rgba(0, 0, 0, .75);
     }
 
-    .video-slot:hover img {
+    .work-item:hover .video-slot img {
       transform: scale(1.06);
       filter: brightness(1) saturate(1.05);
     }
 
-    .video-slot:hover::after { opacity: .55; }
+    .work-item:hover .video-slot::after { opacity: .55; }
 
     .video-slot__play {
       position: absolute;
@@ -473,7 +497,7 @@
       margin-left: 8%;
     }
 
-    .video-slot:hover .video-slot__play span {
+    .work-item:hover .video-slot__play span {
       transform: scale(1.12);
       background: #fff;
     }
@@ -582,9 +606,7 @@
       }
 
       .socials {
-        border-left: none;
         border-top: 1px solid var(--line);
-        padding-left: 0;
         padding-top: 26px;
         margin-top: 30px;
         width: 100%;
@@ -599,8 +621,14 @@
     }
 
     @media (max-width: 620px) {
+      .hero { min-height: clamp(100px, 18svh, 200px); }
+      .section { padding: clamp(52px, 10vw, 90px) 0; }
       .footer__inner { flex-direction: column; align-items: flex-start; text-align: left; }
       .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; }
+    }
+
+    @media (max-width: 480px) {
+      .about__photo { aspect-ratio: 4 / 4; }
     }
   </style>
 </head>
@@ -621,23 +649,11 @@
 
       <nav class="nav" id="nav" aria-label="Main navigation">
         <ul class="nav__list">
-          <li><a class="nav__link" href="#about"     data-nav>About</a></li>
-          <li><a class="nav__link" href="#portfolio" data-nav>Work</a></li>
+          <li><a class="nav__link" href="#about"    data-nav>About</a></li>
+          <li><a class="nav__link" href="#projects" data-nav>Work</a></li>
         </ul>
 
         <div class="socials">
-          <a href="https://www.instagram.com/ricklerici?stkn=cXZzOXY4MTFpMjl5" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-              <rect x="3" y="3" width="18" height="18" rx="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
-            </svg>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61592626974479" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.24-1.46 1.5-1.46h1.6V4.44c-.28-.04-1.23-.12-2.34-.12-2.32 0-3.9 1.42-3.9 4.02v2.16H7.7v3h2.66V21h3.14z"/>
-            </svg>
-          </a>
           <a href="mailto:riccardo.clerici99@gmail.com" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="5" width="18" height="14" rx="2.5"/>
@@ -656,12 +672,12 @@
 
   <main>
 
-    <!-- HERO — empty -->
+    <!-- HERO -->
     <section class="hero" id="hero" aria-label="Hero"></section>
 
 
     <!-- ============================================================
-         ABOUT — photo on the left, single continuous text on the right
+         ABOUT
          ============================================================ -->
     <section class="section" id="about">
       <div class="container">
@@ -689,70 +705,156 @@
 
 
     <!-- ============================================================
-         PORTFOLIO — 4 VIDEO SLOTS
+         PROJECTS — 3 video, 2 per riga con descrizione sotto
          ============================================================ -->
-    <section class="section section--alt" id="portfolio">
+    <section class="section section--alt" id="projects">
       <div class="container">
 
-        <h2 class="section-title reveal">current</h2>
+        <h2 class="section-title reveal">projects</h2>
 
         <div class="video-grid">
 
-          <!-- SLOT 1 -->
-          <a class="video-slot reveal"
-             href="https://youtu.be/_qUc-T67j3M"
-             target="_blank" rel="noopener"
-             aria-label="Watch video 1">
-            <img src="https://img.youtube.com/vi/_qUc-T67j3M/maxresdefault.jpg"
-                 alt="" loading="lazy" />
-            <span class="video-slot__play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <!-- PROJECT 1 -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://youtu.be/_qUc-T67j3M"
+               target="_blank" rel="noopener"
+               aria-label="Watch video 1">
+              <img src="https://img.youtube.com/vi/_qUc-T67j3M/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/_qUc-T67j3M/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
               </span>
-            </span>
-          </a>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Project title</h3>
+              <p class="work-item__desc">Short description of the project — composer credits, year, production, etc.</p>
+            </div>
+          </article>
 
-          <!-- SLOT 2 -->
-          <a class="video-slot reveal"
-             href="https://youtu.be/K_WhGbedM_s"
-             target="_blank" rel="noopener"
-             aria-label="Watch video 2">
-            <img src="https://img.youtube.com/vi/K_WhGbedM_s/maxresdefault.jpg"
-                 alt="" loading="lazy" />
-            <span class="video-slot__play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <!-- PROJECT 2 (ex PROJECT 3) -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://youtu.be/TAorPrIpbXg"
+               target="_blank" rel="noopener"
+               aria-label="Watch video 2">
+              <img src="https://img.youtube.com/vi/TAorPrIpbXg/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/TAorPrIpbXg/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
               </span>
-            </span>
-          </a>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Project title</h3>
+              <p class="work-item__desc">Short description of the project — composer credits, year, production, etc.</p>
+            </div>
+          </article>
 
-          <!-- SLOT 3 -->
-          <a class="video-slot reveal"
-             href="https://youtu.be/TAorPrIpbXg"
-             target="_blank" rel="noopener"
-             aria-label="Watch video 3">
-            <img src="https://img.youtube.com/vi/TAorPrIpbXg/maxresdefault.jpg"
-                 alt="" loading="lazy" />
-            <span class="video-slot__play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <!-- PROJECT 3 (ex PROJECT 4) -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://www.youtube.com/watch?v=GvscHdVobxw"
+               target="_blank" rel="noopener"
+               aria-label="Watch video 3">
+              <img src="https://img.youtube.com/vi/GvscHdVobxw/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/GvscHdVobxw/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
               </span>
-            </span>
-          </a>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Project title</h3>
+              <p class="work-item__desc">Short description of the project — composer credits, year, production, etc.</p>
+            </div>
+          </article>
 
-          <!-- SLOT 4 — aggiornato con il nuovo video -->
-          <a class="video-slot reveal"
-             href="https://www.youtube.com/watch?v=-KEq6G907KU"
-             target="_blank" rel="noopener"
-             aria-label="Watch video 4">
-            <img src="https://img.youtube.com/vi/-KEq6G907KU/maxresdefault.jpg"
-                 alt="" loading="lazy" />
-            <span class="video-slot__play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         RE-SCORES — 3 video, 2 per riga con descrizione sotto
+         ============================================================ -->
+    <section class="section" id="re-scores">
+      <div class="container">
+
+        <h2 class="section-title reveal">re-scores</h2>
+
+        <div class="video-grid">
+
+          <!-- RE-SCORE 1 -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://youtu.be/IObTwi3dDOI"
+               target="_blank" rel="noopener"
+               aria-label="Watch re-score 1">
+              <img src="https://img.youtube.com/vi/IObTwi3dDOI/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/IObTwi3dDOI/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
               </span>
-            </span>
-          </a>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Re-score title</h3>
+              <p class="work-item__desc">Short description of the re-score — original film, composer, year, etc.</p>
+            </div>
+          </article>
+
+          <!-- RE-SCORE 2 -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://youtu.be/ibLqNzWemGU"
+               target="_blank" rel="noopener"
+               aria-label="Watch re-score 2">
+              <img src="https://img.youtube.com/vi/ibLqNzWemGU/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/ibLqNzWemGU/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </span>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Re-score title</h3>
+              <p class="work-item__desc">Short description of the re-score — original film, composer, year, etc.</p>
+            </div>
+          </article>
+
+          <!-- RE-SCORE 3 -->
+          <article class="work-item reveal">
+            <a class="video-slot"
+               href="https://youtu.be/6TLeLI-__lk"
+               target="_blank" rel="noopener"
+               aria-label="Watch re-score 3">
+              <img src="https://img.youtube.com/vi/6TLeLI-__lk/maxresdefault.jpg"
+                   alt="" loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/6TLeLI-__lk/hqdefault.jpg'" />
+              <span class="video-slot__play" aria-hidden="true">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </span>
+            </a>
+            <div class="work-item__info">
+              <h3 class="work-item__title">Re-score title</h3>
+              <p class="work-item__desc">Short description of the re-score — original film, composer, year, etc.</p>
+            </div>
+          </article>
 
         </div>
 
@@ -791,10 +893,8 @@
     (function () {
       'use strict';
 
-      /* 1. Dynamic footer year */
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      /* 2. Header + to-top state on scroll */
       const header = document.getElementById('header');
       const toTop  = document.getElementById('to-top');
 
@@ -803,7 +903,6 @@
         toTop.classList.toggle('is-visible', window.scrollY > 600);
       };
 
-      /* 3. Mobile menu */
       const burger = document.getElementById('burger');
       const nav    = document.getElementById('nav');
 
@@ -827,7 +926,6 @@
         if (e.key === 'Escape') closeNav();
       });
 
-      /* 4. Scroll to top */
       toTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -835,7 +933,6 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      /* 5. Reveal on scroll */
       const revealEls = document.querySelectorAll('.reveal');
 
       if ('IntersectionObserver' in window) {
@@ -854,7 +951,6 @@
         revealEls.forEach(el => el.classList.add('is-visible'));
       }
 
-      /* 6. Active nav link */
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('[data-nav]');
 
